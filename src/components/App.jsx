@@ -3,9 +3,11 @@ import { FallingLines } from 'react-loader-spinner';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import css from './App.module.css';
 
-const Home = lazy(() => import('../pages/Home/Home'));
-const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
-const Movies = lazy(() => import('../pages/Movies/Movies'));
+const Home = lazy(() => import('../pages/Home/Home.js'));
+const Movies = lazy(() => import('../pages/Movies/Movies.js'));
+const MovieDetails = lazy(() =>
+  import('../pages/MovieDetails/MovieDetails.js')
+);
 const Cast = lazy(() => import('./Cast/Cast.js'));
 const Reviews = lazy(() => import('./Reviews/Reviews.js'));
 export const App = () => {
