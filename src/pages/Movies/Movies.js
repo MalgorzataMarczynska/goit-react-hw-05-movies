@@ -29,7 +29,6 @@ const Movies = () => {
       try {
         const data = await searchMovies(searchQuery, (searchPage = 1));
         const movies = data.movies.results;
-        console.log('movies', movies);
         setSearchedMovies(movies);
       } catch (error) {
         setError(error);
