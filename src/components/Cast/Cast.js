@@ -3,17 +3,19 @@ import { useParams } from 'react-router-dom';
 import { FallingLines } from 'react-loader-spinner';
 import { fetchCast } from 'api/FetchCast';
 import css from './Cast.module.css';
-//import PropTypes from 'prop-types';
+
 export const Cast = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [movieCast, setMovieCast] = useState([]);
   const { movieId } = useParams();
+
   useEffect(() => {
-    const handleRequest = async movieId => {
+    const handleRequest = async id => {
       setIsLoading(true);
       try {
-        const data = await fetchCast(movieId);
+        const id = Number(movieId);
+        const data = await fetchCast(id);
         const cast = data.credit.cast;
         setMovieCast(cast);
       } catch (error) {
@@ -39,7 +41,7 @@ export const Cast = () => {
       <ul className={css.list}>
         {movieCast.map(actor => (
           <li key={actor.cast_id} className={css.listItem}>
-            {actor.poster_path !== null || undefined ? (
+            {actor.profile_path !== null || undefined ? (
               <img
                 className={css.poster}
                 src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
@@ -52,8 +54,8 @@ export const Cast = () => {
                 alt={actor.name}
               />
             )}
-            <p>Actor: {actor.name}</p>
-            <p>Character: {actor.character}</p>
+            <p className={css.description}>Actor: {actor.name}</p>
+            <p className={css.description}>Character: {actor.character}</p>
           </li>
         ))}
       </ul>

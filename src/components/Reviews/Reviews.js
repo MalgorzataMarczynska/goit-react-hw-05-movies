@@ -2,18 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchReviews } from 'api/FetchReviews';
 import { FallingLines } from 'react-loader-spinner';
-// import css from './Home.module.css';
-//import PropTypes from 'prop-types';
+import css from './Reviews.module.css';
+
 export const Reviews = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
+
   useEffect(() => {
-    const handleRequest = async (movieId, page = 1) => {
+    const handleRequest = async (id, page = 1) => {
       setIsLoading(true);
       try {
-        const data = await fetchReviews(movieId, (page = 1));
+        const id = Number(movieId);
+        const data = await fetchReviews(id, (page = 1));
         const review = data.reviews.results;
         setReviews(review);
       } catch (error) {
@@ -38,8 +40,8 @@ export const Reviews = () => {
       <ul>
         {reviews.map(review => (
           <li key={review.id}>
-            <h3>Author: {review.author}</h3>
-            <p> {review.content}</p>
+            <h3 className={css.author}>Author: {review.author}</h3>
+            <p className={css.review}> {review.content}</p>
           </li>
         ))}
         {reviews.length === 0 && (

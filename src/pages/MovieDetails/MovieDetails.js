@@ -1,22 +1,23 @@
 import { fetchMovieById } from 'api/FetchMovieById';
 import React, { useState, useEffect } from 'react';
 import { FallingLines } from 'react-loader-spinner';
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
 import css from './MovieDetails.module.css';
-//import PropTypes from 'prop-types';
 
 export const MovieDetails = () => {
   const [movieDetail, setMovieDetail] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { movieId } = useParams();
-  console.log(movieId, typeof movieId);
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
 
   useEffect(() => {
-    const handleRequest = async movieId => {
+    const handleRequest = async id => {
       setIsLoading(true);
       try {
-        const data = await fetchMovieById(movieId);
+        const id = Number(movieId);
+        const data = await fetchMovieById(id);
         const movie = data.movie;
         setMovieDetail(movie);
       } catch (error) {
@@ -29,21 +30,17 @@ export const MovieDetails = () => {
   }, [movieId]);
 
   const releaseDate = movieDetail.release_date;
-  console.log('data otw', releaseDate);
-  // const releaseYear = movieDetail.release_date.slice(0, 4);
-  // console.log('year', releaseYear);
-  const genres = movieDetail.genres;
-  console.log('genres', genres);
-  // const movieGenres = genres.map(genre => genre.name).join(' ');
-  // console.log('gatunki', movieGenres);
+  const releaseYear = `${releaseDate}`.substring(0, 4);
 
+  const genres = movieDetail.genres;
+  const genreNames = genres?.map(genre => genre.name).join(' ');
   const userScore = Math.round(movieDetail.vote_average * 10);
   return (
     <section className={css.section}>
       <div className={css.goBackSec}>
-        <button className={css.button} type="button">
+        <Link to={backLinkHref} className={css.goBack}>
           Go back
-        </button>
+        </Link>
       </div>
       {error && <p>Sorry, something went really wrong: {error.message}</p>}
       {isLoading && (
@@ -61,26 +58,34 @@ export const MovieDetails = () => {
           alt={movieDetail.title}
         />
         <div>
-          <h2>
-            {movieDetail.title} ({movieDetail.release_date})
+          <h2 className={css.title}>
+            {movieDetail.title} ({releaseYear})
           </h2>
-          <p>User Score: {userScore} %</p>
+          <p>
+            <b>User Score:</b> {userScore} %
+          </p>
           <h3>Overview</h3>
           <p>{movieDetail.overview}</p>
           <h4>Genres</h4>
-          {/* {genres.map(genre => (
-            <span>{genre.name}</span>
-          ))} */}
+          {genres?.length > 0 ? (
+            <p className={css.genres}>{genreNames} </p>
+          ) : (
+            <p>We have no information about it</p>
+          )}
         </div>
       </div>
       <div className={css.additional}>
         <h5>Additional information</h5>
         <ul>
           <li>
-            <Link to="cast">Cast</Link>
+            <Link to="cast" className={css.linkItem}>
+              Cast
+            </Link>
           </li>
           <li>
-            <Link to="reviews">Rewiews</Link>
+            <Link to="reviews" className={css.linkItem}>
+              Rewiews
+            </Link>
           </li>
         </ul>
         <Outlet />

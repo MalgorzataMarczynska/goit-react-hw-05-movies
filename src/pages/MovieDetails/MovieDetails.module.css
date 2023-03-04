@@ -2,7 +2,17 @@
   padding: 0.5em 2em;
 }
 .goBackSec {
-  margin: 0.5em 0;
+  padding: 0.5em 0;
+}
+.goBack {
+  background-color: rgb(112, 0, 112);
+  color: white;
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 0.2em 0.5em;
+  max-width: 7vw;
+  text-align: center;
+  text-decoration: none;
 }
 .button {
   border: 0.5px solid lightgray;
@@ -20,6 +30,20 @@
 .poster {
   max-width: 25vh;
 }
+.title {
+  font-size: 30px;
+  color: rgb(112, 0, 112);
+}
 .additional {
   border-bottom: 1px solid lightgrey;
+}
+.genres {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(80, 79, 79);
+}
+.linkItem:hover,
+.linkItem:focus {
+  color: rgb(112, 0, 112);
+  font-weight: 700;
 }

@@ -9,10 +9,8 @@ import css from './App.module.css';
 
 export const App = () => {
   return (
-    // rozważyć zastosowane 'sharedLayout'
     <div className={css.container}>
       <div className={css.navigation}>
-        {/* zmienić Linki w NavLinki i ostylowac klase active */}
         <nav className={css.navLinks}>
           <NavLink to="/">Home</NavLink>
           <NavLink to="/movies">Movies</NavLink>
