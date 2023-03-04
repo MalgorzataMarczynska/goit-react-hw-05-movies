@@ -1,0 +1,25 @@
+.section {
+  padding: 0.5em 2em;
+}
+.goBackSec {
+  margin: 0.5em 0;
+}
+.button {
+  border: 0.5px solid lightgray;
+  border-radius: 2px;
+  padding: 0.2em 0.7em;
+  background-color: white;
+}
+.mainDescription {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 1em;
+}
+.poster {
+  max-width: 25vh;
+}
+.additional {
+  border-bottom: 1px solid lightgrey;
+}

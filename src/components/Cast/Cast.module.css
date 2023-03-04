@@ -1,0 +1,13 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2em;
+  list-style: none;
+}
+.listItem {
+  max-width: 30vw;
+}
+.poster {
+  max-width: 20vw;
+}
