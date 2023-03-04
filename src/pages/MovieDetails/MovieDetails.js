@@ -1,16 +1,16 @@
 import { fetchMovieById } from 'api/FetchMovieById';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { FallingLines } from 'react-loader-spinner';
 import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
 import css from './MovieDetails.module.css';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movieDetail, setMovieDetail] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = location.state?.from ?? '/movies';
 
   useEffect(() => {
     const handleRequest = async id => {
@@ -88,8 +88,20 @@ export const MovieDetails = () => {
             </Link>
           </li>
         </ul>
-        <Outlet />
+        <Suspense
+          fallback={
+            <FallingLines
+              color="#3f51b5"
+              width="100"
+              visible={true}
+              ariaLabel="falling-lines-loading"
+            />
+          }
+        >
+          <Outlet />
+        </Suspense>
       </div>
     </section>
   );
 };
+export default MovieDetails;

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
+import { FallingLines } from 'react-loader-spinner';
 import { Routes, Route, NavLink } from 'react-router-dom';
-import { Home } from '../pages/Home/Home';
-import { Movies } from '../pages/Movies/Movies';
-import { MovieDetails } from '../pages/MovieDetails/MovieDetails';
-import { Cast } from './Cast/Cast.js';
-import { Reviews } from './Reviews/Reviews.js';
 import css from './App.module.css';
 
+const Home = lazy(() => import('../pages/Home/Home'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
+const Movies = lazy(() => import('../pages/Movies/Movies'));
+const Cast = lazy(() => import('./Cast/Cast.js'));
+const Reviews = lazy(() => import('./Reviews/Reviews.js'));
 export const App = () => {
   return (
     <div className={css.container}>
@@ -16,15 +17,26 @@ export const App = () => {
           <NavLink to="/movies">Movies</NavLink>
         </nav>
       </div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
-        <Route path="*" element={<Home />} />
-      </Routes>
+      <Suspense
+        fallback={
+          <FallingLines
+            color="#3f51b5"
+            width="100"
+            visible={true}
+            ariaLabel="falling-lines-loading"
+          />
+        }
+      >
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 };

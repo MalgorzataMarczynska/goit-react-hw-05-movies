@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { MovieList } from 'components/MovieList/MovieList';
 import { searchMovies } from 'api/SearchMovie';
 import { useSearchParams } from 'react-router-dom';
-export const Movies = () => {
+const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query') ?? '';
   const [searchedMovies, setSearchedMovies] = useState([]);
@@ -73,6 +73,7 @@ export const Movies = () => {
     </div>
   );
 };
+export default Movies;
 Movies.propTypes = {
   handleSubmit: PropTypes.func,
   input: PropTypes.object,

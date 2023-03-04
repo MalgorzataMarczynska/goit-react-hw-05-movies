@@ -4,7 +4,7 @@ import { FallingLines } from 'react-loader-spinner';
 import { fetchCast } from 'api/FetchCast';
 import css from './Cast.module.css';
 
-export const Cast = () => {
+const Cast = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [movieCast, setMovieCast] = useState([]);
@@ -62,3 +62,4 @@ export const Cast = () => {
     </section>
   );
 };
+export default Cast;

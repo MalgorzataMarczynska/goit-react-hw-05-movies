@@ -4,7 +4,7 @@ import { fetchReviews } from 'api/FetchReviews';
 import { FallingLines } from 'react-loader-spinner';
 import css from './Reviews.module.css';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [reviews, setReviews] = useState([]);
@@ -51,3 +51,4 @@ export const Reviews = () => {
     </section>
   );
 };
+export default Reviews;
