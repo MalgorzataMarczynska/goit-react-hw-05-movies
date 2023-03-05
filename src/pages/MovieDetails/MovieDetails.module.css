@@ -8,17 +8,10 @@
   background-color: rgb(112, 0, 112);
   color: white;
   font-weight: 500;
+  border: none;
   border-radius: 5px;
-  padding: 0.2em 0.5em;
-  max-width: 7vw;
+  padding: 0.5em 1em;
   text-align: center;
-  text-decoration: none;
-}
-.button {
-  border: 0.5px solid lightgray;
-  border-radius: 2px;
-  padding: 0.2em 0.7em;
-  background-color: white;
 }
 .mainDescription {
   display: flex;

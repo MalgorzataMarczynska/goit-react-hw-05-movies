@@ -1,7 +1,13 @@
 import { fetchMovieById } from 'api/FetchMovieById';
 import React, { useState, useEffect, Suspense } from 'react';
 import { FallingLines } from 'react-loader-spinner';
-import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
+import {
+  useParams,
+  useLocation,
+  Link,
+  Outlet,
+  useNavigate,
+} from 'react-router-dom';
 import css from './MovieDetails.module.css';
 
 const MovieDetails = () => {
@@ -10,7 +16,9 @@ const MovieDetails = () => {
   const [error, setError] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/movies';
+  const navigate = useNavigate();
+  // const backLinkHref = location.state?.from ?? '/movies';
+  // const backLinkHref = navigate(-1);
 
   useEffect(() => {
     const handleRequest = async id => {
@@ -38,9 +46,16 @@ const MovieDetails = () => {
   return (
     <section className={css.section}>
       <div className={css.goBackSec}>
-        <Link to={backLinkHref} className={css.goBack}>
+        {/* <Link to={backLinkHref} className={css.goBack}>
           Go back
-        </Link>
+        </Link> */}
+        <button
+          type="button"
+          className={css.goBack}
+          onClick={() => navigate(-1)}
+        >
+          Go back
+        </button>
       </div>
       {error && <p>Sorry, something went really wrong: {error.message}</p>}
       {isLoading && (
@@ -78,12 +93,16 @@ const MovieDetails = () => {
         <h5>Additional information</h5>
         <ul>
           <li>
-            <Link to="cast" className={css.linkItem}>
+            <Link to="cast" className={css.linkItem} state={{ from: location }}>
               Cast
             </Link>
           </li>
           <li>
-            <Link to="reviews" className={css.linkItem}>
+            <Link
+              to="reviews"
+              className={css.linkItem}
+              state={{ from: location }}
+            >
               Rewiews
             </Link>
           </li>
