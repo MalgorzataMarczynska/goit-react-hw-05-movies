@@ -17,6 +17,7 @@
 .goBack:focus {
   box-shadow: inset 1px 1px 3px 4px rgb(77, 4, 77);
   color: lightgray;
+  border-radius: 7px;
 }
 .mainDescription {
   display: flex;
