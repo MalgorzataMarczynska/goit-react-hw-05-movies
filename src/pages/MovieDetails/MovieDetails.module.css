@@ -23,14 +23,14 @@
   max-width: 95%;
   display: flex;
   flex-direction: row;
-  gap: 2em;
+  gap: 3em;
   border-bottom: 1px solid lightgrey;
   padding-bottom: 1em;
   font-size: 1.1em;
   line-height: 1.35;
 }
 .poster {
-  max-width: 25vh;
+  max-width: 20%;
 }
 .title {
   font-size: 2em;
