@@ -17,8 +17,6 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  // const backLinkHref = location.state?.from ?? '/movies';
-  // const backLinkHref = navigate(-1);
 
   useEffect(() => {
     const handleRequest = async id => {
@@ -46,9 +44,6 @@ const MovieDetails = () => {
   return (
     <section className={css.section}>
       <div className={css.goBackSec}>
-        {/* <Link to={backLinkHref} className={css.goBack}>
-          Go back
-        </Link> */}
         <button
           type="button"
           className={css.goBack}
@@ -67,11 +62,19 @@ const MovieDetails = () => {
         />
       )}
       <div className={css.mainDescription}>
-        <img
-          className={css.poster}
-          src={`https://image.tmdb.org/t/p/w500${movieDetail.poster_path}`}
-          alt={movieDetail.title}
-        />
+        {movieDetail.poster_path !== null || undefined ? (
+          <img
+            className={css.poster}
+            src={`https://image.tmdb.org/t/p/w500/${movieDetail.poster_path}`}
+            alt={movieDetail.title}
+          />
+        ) : (
+          <img
+            className={css.poster}
+            src={`https://image.tmdb.org/t/p/w500/wmyYQbahIy4SF2Qo6qNBBkJFg7z.jpg`}
+            alt={movieDetail.title}
+          />
+        )}
         <div>
           <h2 className={css.title}>
             {movieDetail.title} ({releaseYear})

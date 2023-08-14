@@ -1,20 +1,49 @@
 .list {
-  padding-top: 0.7em;
+  padding-top: 1.5em;
   list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
 }
 .listItem {
-  background-color: rgb(221, 221, 221);
   max-width: 40vw;
-  border-radius: 30px;
-  padding: 0.15em 3em;
+  border-radius: 1em;
+  padding: 0.1em 0.15em 0.1em 1.5em;
   margin-bottom: 0.5em;
-  box-shadow: inset 1px 1px 5px 5px rgb(245, 244, 244);
+  box-shadow: inset 1px 1px 5px 5px rgb(221, 221, 221);
 }
 .listItem a {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   font-weight: 700;
+  text-transform: uppercase;
+  text-decoration-line: underline;
+  text-underline-offset: 0.5em;
+  color: rgb(112, 0, 112);
+}
+.listItem img {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1em;
 }
 .listItem a:hover,
-.listItem a:focus {
-  color: rgb(112, 0, 112);
-  font-weight: 700;
+.listItem a:focus,
+.listItem a:active {
+  color: rgb(180, 0, 180);
+}
+.listItem a:visited {
+  color: rgb(100, 99, 99);
+}
+.poster_thumb {
+  display: block;
+  max-width: 10vh;
+  border-radius: 1em;
+  overflow: hidden;
+  align-items: center;
 }

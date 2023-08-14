@@ -1,8 +1,8 @@
 .section {
-  padding: 0.5em 2em;
+  padding: 1em 3em;
 }
 .goBackSec {
-  padding: 0.5em 0;
+  padding: 0 0 1em 0;
 }
 .goBack {
   background-color: rgb(112, 0, 112);
@@ -20,29 +20,40 @@
   border-radius: 7px;
 }
 .mainDescription {
+  max-width: 95%;
   display: flex;
   flex-direction: row;
   gap: 2em;
   border-bottom: 1px solid lightgrey;
   padding-bottom: 1em;
+  font-size: 1.1em;
+  line-height: 1.35;
 }
 .poster {
   max-width: 25vh;
 }
 .title {
-  font-size: 30px;
+  font-size: 2em;
   color: rgb(112, 0, 112);
 }
 .additional {
   border-bottom: 1px solid lightgrey;
 }
+.additional h5 {
+  font-size: 0.9em;
+}
 .genres {
-  font-size: 14px;
+  font-size: 0.9em;
   font-weight: 500;
   color: rgb(80, 79, 79);
 }
+.linkItem {
+  text-underline-offset: 0.2em;
+  color: rgb(112, 0, 112);
+  font-weight: 500;
+  font-size: 1.1em;
+}
 .linkItem:hover,
 .linkItem:focus {
-  color: rgb(112, 0, 112);
   font-weight: 700;
 }

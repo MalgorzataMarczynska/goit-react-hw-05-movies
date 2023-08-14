@@ -12,8 +12,9 @@
   max-width: 15vw;
 }
 .description {
-  font-size: 12px;
-  font-weight: 500;
   max-width: 15vw;
   height: 3vh;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(112, 0, 112);
 }

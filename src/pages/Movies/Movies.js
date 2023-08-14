@@ -40,7 +40,7 @@ const Movies = () => {
   }, [searchQuery]);
   return (
     <div className={css.section}>
-      <form onSubmit={handleSubmit}>
+      <form className={css.searchForm} onSubmit={handleSubmit}>
         <input
           className={css.input}
           type="text"

@@ -1,14 +1,20 @@
 .section {
-  padding: 1em 2em;
+  padding: 3em 2em;
+}
+.searchForm {
+  display: flex;
+  justify-content: center;
 }
 .input {
+  padding: 1em 4em;
   border: solid 1px rgb(194, 191, 191);
-  padding: 0.5em 4em;
-  font-size: 12px;
+  font-size: 16px;
   color: grey;
 }
 .input:hover,
 .input:focus {
+  outline: none;
+  appearance: none;
   border: solid 1px rgb(112, 0, 112);
 }
 .input:active {
@@ -17,12 +23,12 @@
   border: solid 1px rgb(112, 0, 112);
 }
 .button {
-  padding: 0.5em 1em;
+  padding: 0.9em 1.5em;
   border: none;
   outline: none;
   appearance: none;
   background-color: rgb(112, 0, 112);
-  border-radius: 2px;
+  border-radius: 0.2em;
   color: white;
 }
 .button:hover,
@@ -31,6 +37,7 @@
   box-shadow: 1px 1px 2px 2px rgb(112, 0, 112);
 }
 .invitation {
+  margin: 2em auto;
   font-size: 26px;
   font-weight: 700;
   color: rgb(112, 0, 112);
